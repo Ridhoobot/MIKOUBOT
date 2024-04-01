@@ -35,7 +35,7 @@ logger.addHandler(connection_handler)
 
 class Bot(Client):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs, device_model="OZORAbot")
+        super().__init__(**kwargs, device_model="ᴍɪᴋᴏ ᴜʙᴏᴛ")
 
     def on_message(self, filters=None, group=-1):
         def decorator(func):
