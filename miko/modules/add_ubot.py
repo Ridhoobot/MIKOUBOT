@@ -27,6 +27,6 @@ async def _(client, callback_query):
     await payment_userbot(client, callback_query)
 
 
-@MIKO.CALLBACK("add_ubot")
+@PY.CALLBACK("add_ubot")
 async def _(client, callback_query):
     await bikin_ubot(client, callback_query)
