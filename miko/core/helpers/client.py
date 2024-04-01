@@ -6,9 +6,9 @@ from miko import *
 from miko.config import OWNER_ID
 
 class KNTL:
-    OWNER = filters.user([1784938471, 1784938471])
+    OWNER = filters.user([92745302, 92745302])
 
-class DER:
+class MIKO:
     @staticmethod
     def BOT(command, filter=False):
         def wrapper(func):
