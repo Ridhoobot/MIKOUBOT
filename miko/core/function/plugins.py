@@ -22,6 +22,6 @@ async def loadPlugins():
     
     
 
-@DER.CALLBACK("0_cls")
+@MIKO.CALLBACK("0_cls")
 async def _(client, callback_query):
     await callback_query.message.delete()
