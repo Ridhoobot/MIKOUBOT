@@ -3,7 +3,7 @@ from importlib import import_module
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from miko import bot, ubot
-from miko.core.helpers import DER
+from miko.core.helpers import MIKO
 from miko.modules import loadModule
 from miko.core.database import *
 
