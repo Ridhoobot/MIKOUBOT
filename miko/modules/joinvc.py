@@ -58,7 +58,7 @@ async def _(client, message):
         await client.group_call.start(chat_id, join_as=client.me.id)
     except Exception as e:
         return await message.reply(f"ERROR: {e}")
-    await message.reply("<b>Si Jamet Naek Ke Pohon</b>")
+    await message.reply("<b>Si Ganteng Naek Ke Pohon</b>")
     await asyncio.sleep(5)
     await client.group_call.set_is_mute(True)
     add_list(client.me.id, text)
@@ -72,7 +72,7 @@ async def _(client, message):
     except Exception as e:
         return await message.reply(f"ERROR: {e}")
     remove_list(client.me.id)
-    return await message.reply("<b>Si Jamet Turun Dari Pohon</b>")
+    return await message.reply("<b>Si Ganteng Turun Dari Pohon</b>")
 
 
 @MIKO.UBOT("listos")
