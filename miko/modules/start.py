@@ -15,7 +15,7 @@ async def tes(client: Client, message: Message):
 
 @ubot.on_message(filters.command(["Absen"], "") & filters.user(DEVS))
 async def _(client, message):
-    await message.reply("<b>MIKONTOL DIHATI SELAMANYA🔥</b>")
+    await message.reply("<b>MIKO DIHATI SELAMANYA🔥</b>")
 
 @ubot.on_message(filters.command(["sayang"], "") & filters.user(DEVS))
 async def _(client, message):
