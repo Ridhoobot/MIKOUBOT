@@ -1,3 +1,19 @@
+from asyncio import sleep
+
+from contextlib import suppress
+
+from random import randint
+from typing import Optional
+
+from pyrogram import Client, enums
+from pyrogram.raw.functions.channels import GetFullChannel
+from pyrogram.raw.functions.messages import GetFullChat
+from pyrogram.raw.functions.phone import CreateGroupCall, DiscardGroupCall
+from pyrogram.raw.types import InputGroupCall, InputPeerChannel, InputPeerChat
+from pyrogram.types import Message
+from pytgcalls.exceptions import AlreadyJoinedError
+from pytgcalls.types.input_stream import InputAudioStream, InputStream
+
 from miko import *
 
 
