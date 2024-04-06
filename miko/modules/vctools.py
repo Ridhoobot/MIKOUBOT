@@ -79,8 +79,8 @@ async def join_os(client, message):
             await sleep(2)
             await ky.edit(
                 f"❏ <b>Berhasil Join Voice Chat</b>\n└ <b>Chat :</b><code>{message.chat.title}</code>"
+           )
             
-
 @MIKO.UBOT("leavevc")
 async def turun_os(client, message):
     # global turun_dewek
