@@ -32,7 +32,7 @@ async def is_afk_(f, client, message):
 is_afk = filters.create(func=is_afk_, name="is_afk_")
 
 
-@bots.on_message(filters.me & filters.command("afk", cmd))
+@ubot.on_message(filters.me & filters.command("afk", cmd))
 async def set_afk(client, message):
     if len(message.command) == 1:
         return await eor(
@@ -57,7 +57,7 @@ async def set_afk(client, message):
     await pablo.edit(msg)
 
 
-@bots.on_message(
+@ubot.on_message(
     is_afk
     & (filters.mentioned | filters.private)
     & ~filters.me
@@ -99,7 +99,7 @@ async def afk_er(client, message):
     await message.reply(message_to_reply)
 
 
-@bots.on_message(filters.outgoing & filters.me & is_afk)
+@ubot.on_message(filters.outgoing & filters.me & is_afk)
 async def no_afke(client, message):
     user_id = client.me.id
     botlog = await get_log_groups(user_id)
