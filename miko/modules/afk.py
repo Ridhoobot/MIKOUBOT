@@ -11,7 +11,7 @@ Bantuan Untuk Afk
 """
 
 
-@PY.miko("afk")
+@MIKO.UBOT("afk")
 async def _(client, message):
     await set_afk(client, message)
     
