@@ -31,9 +31,6 @@ from pyrogram.raw.functions.messages import GetFullChat
 from pyrogram.raw.functions.phone import CreateGroupCall, DiscardGroupCall
 from pyrogram.raw.types import InputGroupCall, InputPeerChannel, InputPeerChat
 from pyrogram.types import Message
-#from pytgcalls.exceptions import AlreadyJoinedError
-#from pytgcalls.types.input_stream import InputAudioStream, InputStream
-
 from miko import *
 
 async def get_group_call(
@@ -80,7 +77,12 @@ async def join_os(client, message):
             await ky.edit(
                 f"❏ <b>Berhasil Join Voice Chat</b>\n└ <b>Chat :</b><code>{message.chat.title}</code>"
            )
-            
+
+        await sleep(1)
+        except AlreadyJoinedError:
+            await ky.edit("Akun anda sudah diatas.")
+        except Exception as e:
+            return await ky.edit(f"ERROR: {e}") 
 @MIKO.UBOT("leavevc")
 async def turun_os(client, message):
     # global turun_dewek
