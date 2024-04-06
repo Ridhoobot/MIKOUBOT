@@ -132,7 +132,6 @@ async def start_vctools(client, message):
     except Exception as e:
         await ky.edit(f"<b>INFO:</b> `{e}`")
 
-
 @MIKO.UBOT("stopvc")
 async def stop_vctools(client, message):
     ky = await message.reply("<code>Processing....</code>")
@@ -142,4 +141,7 @@ async def stop_vctools(client, message):
     ):
         return
     await client.invoke(DiscardGroupCall(call=group_call))
-    await ky.edit(
+    await ky.edit(        
+	   f"<b>• Obrolan Suara Diakhiri</b>\n<b>• Chat : </b><code>{message.chat.title}</code>"
+               )
+	    
