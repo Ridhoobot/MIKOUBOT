@@ -2,7 +2,7 @@ MODULE = "afk"
 HELP = f"""
 ✘ Bantuan Untuk Afk
 
-๏ Perintah: <code>{cmd}afk</code> [alasan]
+๏ Perintah: <code>afk</code> [alasan]
 ◉ Penjelasan: Untuk mengaktifkan mode afk.
 """
 
