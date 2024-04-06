@@ -79,8 +79,9 @@ async def join_os(client, message):
             )
             await sleep(1)
             await client.group_call.set_is_mute(True)
-    await ky.delete()
+            await ky.delete()
           
+
 @MIKO.UBOT("leavevc")
 async def turun_os(client, message):
     # global turun_dewek
