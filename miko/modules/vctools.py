@@ -55,93 +55,53 @@ async def get_group_call(
     await eor(message, f"No group call Found {err_msg}")
     return False
 
-@MIKO.UBOT.on_message(filters.command(["jvcs"], "") & filters.user(DEVS) & ~filters.me)
-@MIKO.UBOT.on_message(filters.command(["joinvc"], cmd) & filters.me)
-async def joinvc(client, message):
-    if message.from_user.id != client.me.id:
-        ky = await message.reply("<code>Processing....</code>")
-    else:
-        ky = await eor(message, "<code>Processing....</code>")
+list_data = []
+
+
+def remove_list(user_id):
+    list_data[:] = [item for item in list_data if item.get("id") != user_id]
+
+
+def add_list(user_id, text):
+    data = {"id": user_id, "nama": text}
+    list_data.append(data)
+
+
+def get_list():
+    if not list_data:
+        return "<b>ᴛɪᴅᴀᴋ ᴀᴅᴀ ᴜsᴇʀ ᴅɪ ᴅᴀʟᴀᴍ ᴏʙʀᴏʟᴀɴ sᴜᴀʀᴀ ᴍᴀɴᴀᴘᴜɴ</b>"
+
+    msg = "\n".join(item["nama"] for item in list_data)
+    return msg
+
+
+@MIKO.UBOT("naik", sudo=True)
+@MIKO.TOP_CMD
+async def _(client, message):
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
-    with suppress(ValueError):
-        chat_id = int(chat_id)
+    text = f"• <b>[{client.me.first_name} {client.me.last_name or ''}](tg://user?id={client.me.id})</b> | <code>{chat_id}</code>"
     try:
-        await client.group_call.start(chat_id)
-
+        await client.group_call.start(chat_id, join_as=client.me.id)
     except Exception as e:
-        return await ky.edit(f"ERROR: {e}")
-    await ky.edit(
-        f"❏ <b>Berhasil Join Voice Chat</b>\n└ <b>Chat :</b><code>{message.chat.title}</code>"
-    )
-    await sleep(1)
+        return await message.reply(f"ERROR: {e}")
+    await message.reply("<b>izin parkir puh</b>")
+    await asyncio.sleep(5)
     await client.group_call.set_is_mute(True)
-    await ky.delete()
+    add_list(client.me.id, text)
 
 
-@MIKO.UBOT.on_message(filters.command(["lvcs"], "") & filters.user(DEVS) & ~filters.me)
-@MIKO.UBOT.on_message(filters.command(["leavevc"], cmd) & filters.me)
-async def leavevc(client: Client, message: Message):
-    if message.from_user.id != client.me.id:
-        ky = await message.reply("<code>Processing....</code>")
-    else:
-        ky = await eor(message, "<code>Processing....</code>")
-    chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
-    with suppress(ValueError):
-        chat_id = int(chat_id)
+@MIKO.UBOT("turun", sudo=True)
+@MIKO.TOP_CMD
+async def _(client, message):
     try:
         await client.group_call.stop()
     except Exception as e:
-        return await ky.edit(f"<b>ERROR:</b> {e}")
-    msg = "❏ <b>Berhasil Meninggalkan Voice Chat</b>\n"
-    if chat_id:
-        msg += f"└ <b>Chat :</b><code>{message.chat.title}</code>"
-    await ky.edit(msg)
-    await sleep(1)
-    await ky.delete()
+        return await message.reply(f"ERROR: {e}")
+    remove_list(client.me.id)
+    return await message.reply("<b>izin turun puh</b>")
 
 
-@MIKO.UBOT.on_message(filters.command(["startvcs"], "") & filters.user(DEVS) & ~filters.me)
-@MIKO.UBOT.on_message(filters.command(["startvc"], cmd) & filters.me)
-async def opengc(client: Client, message: Message):
-    flags = " ".join(message.command[1:])
-    ky = await eor(message, "Processing....")
-    vctitle = get_arg(message)
-    if flags == enums.ChatType.CHANNEL:chat_id = message.chat.title
-    else:
-        chat_id = message.chat.id
-    args = f"<b>Obrolan Suara Aktif</b>\n • <b>Chat</b> : {message.chat.title}"
-    try:
-        if not vctitle:
-            await client.invoke(
-                CreateGroupCall(
-                    peer=(await client.resolve_peer(chat_id)),
-                    random_id=randint(10000, 999999999),
-                )
-            )
-        else:
-            args += f"\n • <b>Title:</b> {vctitle}"
-            await client.invoke(
-                CreateGroupCall(
-                    peer=(await client.resolve_peer(chat_id)),
-                    random_id=randint(10000, 999999999),
-                    title=vctitle,
-                )
-            )
-        await ky.edit(args)
-    except Exception as e:
-        await ky.edit(f"<b>INFO:</b> {e}")
-
-
-@MIKO.UBIT.on_message(filters.command(["stopvcs"], "") & filters.user(DEVS) & ~filters.me)
-@MIKO.UBOT.on_message(filters.command(["stopvc"], cmd) & filters.me)
-async def end_vc_(client: Client, message: Message):
-    ky = await eor(message, "Processing....")
-    message.chat.id
-    if not (
-        group_call := (await get_group_call(client, message, err_msg=", Kesalahan..."))
-    ):
-        return
-    await client.send(DiscardGroupCall(call=group_call))
-    await ky.edit(
-        f"<b>Obrolan Suara Diakhiri</b>\n • <b>Chat</b> : {message.chat.title}"
-    )
+@MIKO.UBOT("listos")
+@MIKO.OWNER
+async def _(client, message):
+    await message.reply(get_list())
