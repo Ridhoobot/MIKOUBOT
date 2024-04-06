@@ -32,7 +32,7 @@ async def is_afk_(f, client, message):
 is_afk = filters.create(func=is_afk_, name="is_afk_")
 
 
-@ubot.on_message(filters.me & filters.command("afk", cmd))
+@ubot.on_message(filters.me & filters.command("afk"))
 async def set_afk(client, message):
     if len(message.command) == 1:
         return await eor(
