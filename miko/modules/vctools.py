@@ -118,19 +118,17 @@ async def start_vctools(client, message):
     try:
         if not vctitle:
             await client.invoke(
-	@@ -120,7 +125,7 @@ async def opengc(client: Client, message: Message):
-					    )
+		    
         else:
             args += f"\n • <b>Title : </b> <code>{vctitle}</code>"
             await client.invoke(
                 CreateGroupCall(
                     peer=(await client.resolve_peer(chat_id)),
-	@@ -130,19 +135,19 @@ async def opengc(client: Client, message: Message):
-            )
+
         await ky.edit(args)
     except Exception as e:
         await ky.edit(f"<b>INFO:</b> `{e}`")
-
+			
 @MIKO.UBOT("stopvc")
 async def stop_vctools(client, message):
     ky = await message.reply("<code>Processing....</code>")
