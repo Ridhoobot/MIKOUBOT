@@ -16,7 +16,7 @@ async def _(client, message):
     await set_afk(client, message)
     
     
-@miko.on_message(
+@ubot.on_message(
     is_afk
     & (filters.mentioned | filters.private)
     & ~filters.me
@@ -27,6 +27,6 @@ async def _(client, message):
     await afk_er(client, message)
     
     
-@miko.on_message(filters.outgoing & filters.me & is_afk)
+@ubot.on_message(filters.outgoing & filters.me & is_afk)
 async def _(client, message):
     await no_afke(client, message)
