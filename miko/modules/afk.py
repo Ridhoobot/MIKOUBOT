@@ -20,7 +20,7 @@ from datetime import datetime
 from pyrogram import filters
 
 from miko import *
-
+from miko.utils import *
 
 
 async def is_afk_(f, client, message):
