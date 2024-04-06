@@ -109,7 +109,7 @@ async def start_vctools(client, message):
     flags = " ".join(message.command[1:])
     ky = await message.reply("<code>Processing....</code>")
     vctitle = get_arg(message)
-    if flags == enums.ChatType.CHANNEL:
+     flags == enums.ChatType.CHANNEL:
         chat_id = message.chat.title
     else:
         chat_id = message.chat.id
