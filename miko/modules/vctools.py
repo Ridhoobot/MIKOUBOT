@@ -119,8 +119,7 @@ async def start_vctools(client, message):
         if not vctitle:
             await client.invoke(
 	@@ -120,7 +125,7 @@ async def opengc(client: Client, message: Message):
-                )
-            )
+					    )
         else:
             args += f"\n • <b>Title : </b> <code>{vctitle}</code>"
             await client.invoke(
