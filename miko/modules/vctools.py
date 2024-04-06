@@ -25,16 +25,16 @@ MODULE = "vctools"
 HELP = f"""
 ✘ Bantuan Untuk Voice Chat
 
-๏ Perintah: <code>{cmd}startvc</code>
+๏ Perintah: <code>startvc</code>
 ◉ Penjelasan: Untuk memulai voice chat grup.
 
-๏ Perintah: <code>{cmd}stopvc</code>
+๏ Perintah: <code>stopvc</code>
 ◉ Penjelasan: Untuk mengakhiri voice chat grup.
            
-๏ Perintah: <code>{cmd}joinvc</code>
+๏ Perintah: <code>joinvc</code>
 ◉ Penjelasan: Untuk bergabung voice chat grup.
 
-๏ Perintah: <code>{cmd}leavevc</code>
+๏ Perintah: <code>leavevc</code>
 ◉ Penjelasan: Untuk meninggalkan voice chat grup.
 """
 
