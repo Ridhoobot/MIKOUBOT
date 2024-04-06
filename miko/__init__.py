@@ -10,7 +10,7 @@ from pyromod import listen
 
 from miko.config import *
 
-#from pytgcalls import GroupCallFactory
+from pytgcalls import GroupCallFactory
 
 
 class ConnectionHandler(logging.Handler):
@@ -64,7 +64,7 @@ class Ubot(Client):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs, device_model="ᴍɪᴋᴏ ᴜʙᴏᴛ")
-        #self.group_call = GroupCallFactory(self).get_group_call()
+        self.group_call = GroupCallFactory(self).get_group_call()
 
     def on_message(self, filters=None, group=-1):
         def decorator(func):
