@@ -19,7 +19,8 @@ from pyrogram.raw.types import InputGroupCall, InputPeerChannel, InputPeerChat
 from pyrogram.types import Message
 
 from miko import *
-from pytgcalls import GroupCallFactory 
+from pytgcalls import GroupCallFactory *
+
 MODULE = "vctools"
 HELP = f"""
 ✘ Bantuan Untuk Voice Chat
