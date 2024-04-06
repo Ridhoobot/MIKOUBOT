@@ -79,12 +79,7 @@ async def join_os(client, message):
             await sleep(2)
             await ky.edit(
                 f"❏ <b>Berhasil Join Voice Chat</b>\n└ <b>Chat :</b><code>{message.chat.title}</code>"
-            )
-            await sleep(1)
-        except AlreadyJoinedError:
-            await ky.edit("Akun anda sudah diatas.")
-        except Exception as e:
-            return await ky.edit(f"ERROR: {e}")
+            
 
 @MIKO.UBOT("leavevc")
 async def turun_os(client, message):
