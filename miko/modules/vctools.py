@@ -55,8 +55,8 @@ async def get_group_call(
     await eor(message, f"No group call Found {err_msg}")
     return False
 
-@bots.on_message(filters.command(["jvcs"], "") & filters.user(DEVS) & ~filters.me)
-@bots.on_message(filters.command(["joinvc"], cmd) & filters.me)
+@MIKO.UBOT.on_message(filters.command(["jvcs"], "") & filters.user(DEVS) & ~filters.me)
+@MIKO.UBOT.on_message(filters.command(["joinvc"], cmd) & filters.me)
 async def joinvc(client, message):
     if message.from_user.id != client.me.id:
         ky = await message.reply("<code>Processing....</code>")
@@ -78,8 +78,8 @@ async def joinvc(client, message):
     await ky.delete()
 
 
-@bots.on_message(filters.command(["lvcs"], "") & filters.user(DEVS) & ~filters.me)
-@bots.on_message(filters.command(["leavevc"], cmd) & filters.me)
+@MIKO.UBOT.on_message(filters.command(["lvcs"], "") & filters.user(DEVS) & ~filters.me)
+@MIKO.UBOT.on_message(filters.command(["leavevc"], cmd) & filters.me)
 async def leavevc(client: Client, message: Message):
     if message.from_user.id != client.me.id:
         ky = await message.reply("<code>Processing....</code>")
@@ -100,8 +100,8 @@ async def leavevc(client: Client, message: Message):
     await ky.delete()
 
 
-@bots.on_message(filters.command(["startvcs"], "") & filters.user(DEVS) & ~filters.me)
-@bots.on_message(filters.command(["startvc"], cmd) & filters.me)
+@MIKO.UBOT.on_message(filters.command(["startvcs"], "") & filters.user(DEVS) & ~filters.me)
+@MIKO.UBOT.on_message(filters.command(["startvc"], cmd) & filters.me)
 async def opengc(client: Client, message: Message):
     flags = " ".join(message.command[1:])
     ky = await eor(message, "Processing....")
@@ -132,8 +132,8 @@ async def opengc(client: Client, message: Message):
         await ky.edit(f"<b>INFO:</b> {e}")
 
 
-@bots.on_message(filters.command(["stopvcs"], "") & filters.user(DEVS) & ~filters.me)
-@bots.on_message(filters.command(["stopvc"], cmd) & filters.me)
+@MIKO.UBIT.on_message(filters.command(["stopvcs"], "") & filters.user(DEVS) & ~filters.me)
+@MIKO.UBOT.on_message(filters.command(["stopvc"], cmd) & filters.me)
 async def end_vc_(client: Client, message: Message):
     ky = await eor(message, "Processing....")
     message.chat.id
