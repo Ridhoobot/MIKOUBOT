@@ -15,12 +15,19 @@ async def tes(client: Client, message: Message):
 
 @ubot.on_message(filters.command(["Absen"], "") & filters.user(DEVS))
 async def _(client, message):
-    await message.reply("<b>MIKO DIHATI SELAMANYA🔥</b>")
+    await message.reply("<b>BERISIK BOCIL</b>")
 
 @ubot.on_message(filters.command(["sayang"], "") & filters.user(DEVS))
 async def _(client, message):
-    await message.reply("<b>Apaa miko Sayanggg🥰</b>")
-
+    await message.reply("<b>iya bubb?</b>")
+        
+@ubot.on_message(filters.command(["takbir"], "") & filters.user(DEVS))
+async def _(client, message):
+    await message.reply("<b>ALLAHUAKBAR!</b>")    
+        
+@ubot.on_message(filters.command(["luv u"], "") & filters.user(DEVS))
+async def _(client, message):
+    await message.reply("<b>luv u more miko!🥰</b>")
 
 @MIKO.UBOT("ping|p", sudo=True)
 @MIKO.TOP_CMD
