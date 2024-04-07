@@ -1,53 +1,76 @@
-import os
+from time import time
 
-from pyrogram import *
-from pyrogram import filters
-from pyrogram.types import *
+from miko import *
 
-from Amang import *
-from Amang.config import *
-from Amang.utils import *
+MODULE = "afk"
+HELP = """
+<b>『 ʙᴀɴᴛᴜᴀɴ ᴜɴᴛᴜᴋ ᴀғᴋ 』</b>
+
+  <b>• ᴘᴇʀɪɴᴛᴀʜ:</b> <code>{0}afk</code></code>
+  <b>• ᴘᴇɴᴊᴇʟᴀsᴀɴ:</b> ᴜɴᴛᴜᴋ ᴍᴇɴɢᴀᴋᴛɪғᴋᴀɴ ᴀғᴋ 
+
+  <b>• ᴘᴇʀɪɴᴛᴀʜ:</b> <code>{0}unafk</code></code>
+  <b>• ᴘᴇɴᴊᴇʟᴀsᴀɴ:</b> ᴜɴᴛᴜᴋ ᴍᴇɴᴏɴᴀᴋᴛɪғᴋᴀɴ ᴀғᴋ
+"""
 
 
-@ubot.on_message(filters.command(["curi"], cmd) & filters.me)
-async def pencuri(client, message):
-    dia = message.reply_to_message
-    client.me.id
-    botlog = bot.me.username
-    if not dia:
-        await client.send_message(botlog, "<b>Media tidak didukung</b>")
-    anjing = dia.caption or None
-    mmk = await message.edit_text("Processing...")
-    await mmk.delete()
-    if dia.text:
-        await dia.copy(botlog)
-        await message.delete()
-    if dia.photo:
-        anu = await client.download_media(dia)
-        await client.send_photo(botlog, anu, anjing)
-        await message.delete()
-        os.remove(anu)
-    if dia.video:
-        anu = await client.download_media(dia)
-        await client.send_video(botlog, anu, anjing)
-        await message.delete()
-        os.remove(anu)
-    if dia.audio:
-        anu = await client.download_media(dia)
-        await client.send_audio(botlog, anu, anjing)
-        await message.delete()
-        os.remove(anu)
-    if dia.voice:
-        anu = await client.download_media(dia)
-        await client.send_voice(botlog, anu, anjing)
-        await message.delete()
-        os.remove(anu)
-    if dia.document:
-        anu = await client.download_media(dia)
-        await client.send_document(botlog, anu, anjing)
-        await message.delete()
-        os.remove(anu)
-    try:
-        await client.send_message(botlog, "<b>Pap nya kaka</b>")
-    except Exception as e:
-        print(e)
+class AwayFromKeyboard:
+    def init(self, client, message, reason=""):
+        self.client = client
+        self.message = message
+        self.reason = reason
+
+    async def set_afk(self):
+        db_afk = {"time": time(), "reason": self.reason}
+        msg_afk = (
+            f"<b>❏ sᴇᴅᴀɴɢ ᴀғᴋ\n ╰ ᴀʟᴀsᴀɴ: {self.reason}</b>"
+            if self.reason
+            else "<b>❏ sᴇᴅᴀɴɢ ᴀғᴋ</b>"
+        )
+        await set_vars(self.client.me.id, "AFK", db_afk)
+        await self.message.reply(msg_afk, disable_web_page_preview=True)
+        return await self.message.delete()
+
+    async def get_afk(self):
+        vars = await get_vars(self.client.me.id, "AFK")
+        if vars:
+            afk_time = vars.get("time")
+            afk_reason = vars.get("reason")
+            afk_runtime = await get_time(time() - afk_time)
+            afk_text = (
+                f"<b>❏ sᴇᴅᴀɴɢ ᴀғᴋ\n ├ ᴡᴀᴋᴛᴜ: {afk_runtime}\n ╰ ᴀʟᴀsᴀɴ: {afk_reason}</b>"
+                if afk_reason
+                else f"<b>❏ sᴇᴅᴀɴɢ ᴀғᴋ\n ╰ ᴡᴀᴋᴛᴜ: {afk_runtime}</b>"
+            )
+            return await self.message.reply(afk_text, disable_web_page_preview=True)
+
+    async def unset_afk(self):
+        vars = await get_vars(self.client.me.id, "AFK")
+        if vars:
+            afk_time = vars.get("time")
+            afk_runtime = await get_time(time() - afk_time)
+            afk_text = f"<b>❏ ᴋᴇᴍʙᴀʟɪ ᴏɴʟɪɴᴇ\n ╰ ᴀғᴋ sᴇʟᴀᴍᴀ: {afk_runtime}"
+            await self.message.reply(afk_text)
+            await self.message.delete()
+            return await remove_vars(self.client.me.id, "AFK")
+
+
+@MIKO.UBOT("afk")
+@MIKO.TOP_CMD
+async def _(client, message):
+    reason = get_arg(message)
+    afk_handler = AwayFromKeyboard(client, message, reason)
+    await afk_handler.set_afk()
+
+
+@PY.AFK(True)
+async def _(client, message):
+    afk_handler = AwayFromKeyboard(client, message)
+    await afk_handler.get_afk()
+
+
+@MIKO.UBOT("unafk")
+@MIKO.TOP_CMD
+async def _(client, message):
+    afk_handler = AwayFromKeyboard(client, message)
+    return await afk_handler.unset_afk()
