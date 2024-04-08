@@ -25,16 +25,16 @@ MODULE = "vctools"
 HELP = f"""
 ✘ Bantuan Untuk Voice Chat
 
-๏ Perintah: <code>startvc</code>
+๏ Perintah: <code>hidupin</code>
 ◉ Penjelasan: Untuk memulai voice chat grup.
 
-๏ Perintah: <code>stopvc</code>
+๏ Perintah: <code>matiin</code>
 ◉ Penjelasan: Untuk mengakhiri voice chat grup.
            
-๏ Perintah: <code>joinvc</code>
+๏ Perintah: <code>naik</code>
 ◉ Penjelasan: Untuk bergabung voice chat grup.
 
-๏ Perintah: <code>leavevc</code>
+๏ Perintah: <code>turun</code>
 ◉ Penjelasan: Untuk meninggalkan voice chat grup.
 """
 
@@ -105,3 +105,50 @@ async def _(client, message):
 @MIKO.OWNER
 async def _(client, message):
     await message.reply(get_list())
+
+@MIKO.UBOT("hidupin")
+async def start_vctools(client, message):
+    flags = " ".join(message.command[1:])
+    ky = await message.reply("<code>Processing....</code>")
+    vctitle = get_arg(message)
+    if flags == enums.ChatType.CHANNEL:
+        chat_id = message.chat.title
+    else:
+        chat_id = message.chat.id
+    args = (
+        f"<b>• Obrolan Suara Aktif</b>\n<b>• Chat : </b><code>{message.chat.title}</code>"
+    )
+    try:
+        if not vctitle:
+            await client.invoke(
+                CreateGroupCall(
+                    peer=(await client.resolve_peer(chat_id)),
+                    random_id=randint(10000, 999999999),
+                )
+            )
+        else:
+            args += f"\n • <b>Title : </b> <code>{vctitle}</code>"
+            await client.invoke(
+                CreateGroupCall(
+                    peer=(await client.resolve_peer(chat_id)),
+                    random_id=randint(10000, 999999999),
+                    title=vctitle,
+                )
+            )
+        await ky.edit(args)
+    except Exception as e:
+        await ky.edit(f"<b>INFO:</b> `{e}`")
+
+
+@MIKO.UBOT("matiin")
+async def stop_vctools(client, message):
+    ky = await message.reply("<code>Processing....</code>")
+    message.chat.id
+    if not (
+        group_call := (await get_group_call(client, message, err_msg=", Kesalahan..."))
+    ):
+        return
+    await client.invoke(DiscardGroupCall(call=group_call))
+    await ky.edit(
+        f"<b>• Obrolan Suara Diakhiri</b>\n<b>• Chat : </b><code>{message.chat.title}</code>"
+)
