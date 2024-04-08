@@ -25,10 +25,10 @@ MODULE = "vctools"
 HELP = f"""
 ✘ Bantuan Untuk Voice Chat
 
-๏ Perintah: <code>hidupin</code>
+๏ Perintah: <code>startvc</code>
 ◉ Penjelasan: Untuk memulai voice chat grup.
 
-๏ Perintah: <code>matiin</code>
+๏ Perintah: <code>stopvc</code>
 ◉ Penjelasan: Untuk mengakhiri voice chat grup.
            
 ๏ Perintah: <code>naik</code>
@@ -106,7 +106,7 @@ async def _(client, message):
 async def _(client, message):
     await message.reply(get_list())
 
-@MIKO.UBOT("hidupin")
+@MIKO.UBOT("startvc")
 async def start_vctools(client, message):
     flags = " ".join(message.command[1:])
     ky = await message.reply("<code>Processing....</code>")
@@ -140,7 +140,7 @@ async def start_vctools(client, message):
         await ky.edit(f"<b>INFO:</b> `{e}`")
 
 
-@MIKO.UBOT("matiin")
+@MIKO.UBOT("stopvc")
 async def stop_vctools(client, message):
     ky = await message.reply("<code>Processing....</code>")
     message.chat.id
