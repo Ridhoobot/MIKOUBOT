@@ -7,8 +7,8 @@ from time import time
 from pyrogram import *
 from pyrogram.types import *
 
-from ubot import bot, get_arg, ubot
-from ubot.core.helpers.colong import progress
+from miko import bot, get_arg, ubot
+from miko.core.helpers.colong import progress
 
 COPY_ID = {}
 
