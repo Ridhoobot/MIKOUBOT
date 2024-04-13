@@ -1,4 +1,4 @@
-from ubot import *
+from miko import *
 
 __MODULE__ = "Copy"
 __HELP__ = """
