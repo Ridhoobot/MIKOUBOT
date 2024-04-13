@@ -29,4 +29,4 @@ from miko.core.plugins.tbot import *
 from miko.core.plugins.strvc import *
 from miko.core.plugins.cpy import *
 from miko.core.plugins.pgr import *
-from miko.core.plugins.ggl import *
+#from miko.core.plugins.ggl import *
