@@ -15,16 +15,16 @@ Bantuan Untuk Purge
 """
 
 
-@PY.UBOT("del", sudo=True)
+@MIKO.UBOT("del", sudo=True)
 async def _(client, message):
     await del_cmd(client, message)
 
 
-@PY.UBOT("purgeme", sudo=True)
+@MIKO.UBOT("purgeme", sudo=True)
 async def _(client, message):
     await purgeme_cmd(client, message)
 
 
-@PY.UBOT("purge", sudo=True)
+@MIKO.UBOT("purge", sudo=True)
 async def _(client, message):
     await purge_cmd(client, message)
