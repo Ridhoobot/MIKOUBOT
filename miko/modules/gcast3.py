@@ -5,7 +5,7 @@ import random
 from pyrogram.errors import (ChatWriteForbidden, FloodWait, PeerIdInvalid,
                              SlowmodeWait)
 
-from ubot import BLACKLIST_CHAT, PY, ambil_daftar, daftar_rndm, get_chat, kureng_kata, kureng_rndm, tambah_kata, tambah_rndm, gen_font, font
+from miko import BLACKLIST_CHAT, PY, ambil_daftar, daftar_rndm, get_chat, kureng_kata, kureng_rndm, tambah_kata, tambah_rndm, gen_font, font
 
 from .gcast import get_broadcast_id
 
@@ -58,7 +58,7 @@ async def spam_kontol_gikes_memek(client, gc, kata_list, kirim_kata, index_gikes
             del spam_gikesan[gc]
 
 
-@PY.UBOT("bgcdb", sudo=True)
+@MIKO.UBOT("bgcdb", sudo=True)
 async def _(client, message):
     await message.reply("**Ok Anj Diproses, kalo mo matiin ketik `sgcdb`.**")
     cek_gc = await get_broadcast_id(client, "group")
@@ -88,7 +88,7 @@ async def _(client, message):
     
 
 
-@PY.UBOT("addkata", sudo=True)
+@MIKO.UBOT("addkata", sudo=True)
 async def _(client, message):
     if message.reply_to_message:
         kata = message.reply_to_message.text
@@ -100,7 +100,7 @@ async def _(client, message):
     await message.reply_text(f"**Masuk `{kata}` ke kata gikes.**")
 
 
-@PY.UBOT("remkata", sudo=True)
+@MIKO.UBOT("remkata", sudo=True)
 async def _(client, message):
     if message.reply_to_message:
         kata = message.reply_to_message.text
@@ -112,7 +112,7 @@ async def _(client, message):
     await message.reply_text(f"**Dihapus `{kata}` dari kata gikes.**")
 
 
-@PY.UBOT("cekkata", sudo=True)
+@MIKO.UBOT("cekkata", sudo=True)
 async def _(client, message):
     gua = await client.get_me()
     data = await ambil_daftar(client.me.id)
@@ -125,7 +125,7 @@ async def _(client, message):
         await message.reply_text(msg)
 
 
-@PY.UBOT("sgcdb", sudo=True)
+@MIKO.UBOT("sgcdb", sudo=True)
 async def _(client, message):
     cek_gc = await get_broadcast_id(client, "group")
     for chat_id in cek_gc:
