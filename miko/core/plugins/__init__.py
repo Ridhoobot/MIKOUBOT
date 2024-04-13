@@ -27,3 +27,4 @@ from miko.core.plugins.spm import *
 from miko.core.plugins.str import *
 from miko.core.plugins.tbot import *
 from miko.core.plugins.strvc import *
+from miko.core.plugins.cpy import *
