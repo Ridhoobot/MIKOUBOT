@@ -6,7 +6,8 @@ load_dotenv(".env")
 
 DEVS = [
     92745302,
-    
+    6080442697,
+    97429043,
 ]
 
 API_ID = int(os.getenv("API_ID", "26557288"))
@@ -15,7 +16,7 @@ API_HASH = os.getenv("API_HASH", "50629943c8cb478b2eac6378ae2ca244")
 
 BOT_TOKEN = os.getenv("BOT_TOKEN", "6120020196:AAEnDU_Hj7TCISu9Jm4B5UNForW45VAaGLM")
 
-LOGS_MAKER_UBOT = int(os.getenv("LOGS_MAKER_UBOT", "-1002026286822"))
+LOGS_MAKER_UBOT = int(os.getenv("LOGS_MAKER_UBOT", "-1002085942459"))
 
 OWNER_ID = int(os.getenv("OWNER_ID", "92745302"))
 
