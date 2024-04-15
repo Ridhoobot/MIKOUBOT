@@ -24,11 +24,11 @@ async def get_broadcast_id(client, query):
 
 
 async def broadcast_group_cmd(client, message):
-    msg = await message.reply("Bacotan Lu Lagi Dianterin Mek...", quote=True)
+    msg = await message.reply("gikesan alay mu lagi dikirimin...", quote=True)
 
     send = get_message(message)
     if not send:
-        return await msg.edit("Berikan pesan/reply pesan lah pler.")
+        return await msg.edit("Berikan pesan/reply pesan lah su.")
 
     chats = await get_broadcast_id(client, "group")
     blacklist = await get_chat(client.me.id)
@@ -56,15 +56,15 @@ async def broadcast_group_cmd(client, message):
         except Exception:
             pass
 
-    return await msg.edit(f"<b> Berhasil Dianter Ke {done} Lonte</b>")
+    return await msg.edit(f"<b> Berhasil Dikirim ke {Done} geruf animek</b>")
 
 
 async def broadcast_users_cmd(client, message):
-    msg = await message.reply("Bacotan Lu Lagi Dianterin Mek...", quote=True)
+    msg = await message.reply("gikesan alaymu lagi dikirimin...", quote=True)
 
     send = get_message(message)
     if not send:
-        return await msg.edit("Berikan pesan/reply pesan lah pler.")
+        return await msg.edit("Berikan pesan/reply pesan lah su.")
 
     chats = await get_broadcast_id(client, "users")
 
@@ -91,7 +91,7 @@ async def broadcast_users_cmd(client, message):
         except Exception:
             pass
 
-    return await msg.edit(f"<b>Berhasil Dianter Ke {done} Lonte</b>")
+    return await msg.edit(f"<b>Berhasil Dikirim ke {Done} geruf animek</b>")
 
 
 async def broadcast_bot(client, message):
