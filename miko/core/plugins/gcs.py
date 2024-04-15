@@ -56,7 +56,7 @@ async def broadcast_group_cmd(client, message):
         except Exception:
             pass
 
-    return await msg.edit(f"<b> Berhasil Dikirim ke {Done} geruf animek</b>")
+    return await msg.edit(f"<b> Berhasil Dikirim ke {done} geruf animek</b>")
 
 
 async def broadcast_users_cmd(client, message):
@@ -91,7 +91,7 @@ async def broadcast_users_cmd(client, message):
         except Exception:
             pass
 
-    return await msg.edit(f"<b>Berhasil Dikirim ke {Done} geruf animek</b>")
+    return await msg.edit(f"<b>Berhasil Dikirim ke {done} geruf animek/b>")
 
 
 async def broadcast_bot(client, message):
