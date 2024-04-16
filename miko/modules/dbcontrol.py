@@ -17,7 +17,7 @@ async def _(client, message):
 @MIKO.BOT("getprem")
 @MIKO.UBOT("getprem")
 @MIKO.OWNER
-async def _(cliebt, message):
+async def _(client, message):
     await get_prem_user(client, message)
 
 
