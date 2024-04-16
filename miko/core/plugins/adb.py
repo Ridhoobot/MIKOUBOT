@@ -265,10 +265,28 @@ async def bikin_ubot(client, callback_query):
             reply_markup=InlineKeyboardMarkup(buttons))
     await install_my_peer(new_client)
     try:
-        await new_client.join_chat("OZORAsupport")
+        await new_client.join_chat("AlterBaseChat")
     except UserAlreadyParticipant:
         pass
-    
+        return await bot.send_message(
+        LOGS_MAKER_UBOT,
+        f"""
+<b>❏ Userbot Diaktifkan</b>
+<b> ├ Akun :</b> <a href=tg://user?id={new_client.me.id}>{new_client.me.first_name} {new_client.me.last_name or ''}</a> 
+<b> ╰ ID :</b> <code>{new_client.me.id}</code>
+""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "Cek Kadaluarsa",
+                        callback_data=f"cek_masa_aktif {new_client.me.id}",
+                    )
+                ],
+            ]
+        ),
+        disable_web_page_preview=True,
+        )
 
 async def is_cancel(callback_query, text):
     if text.startswith("/cancel"):
