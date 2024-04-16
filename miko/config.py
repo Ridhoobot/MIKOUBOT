@@ -16,7 +16,7 @@ API_HASH = os.getenv("API_HASH", "50629943c8cb478b2eac6378ae2ca244")
 
 BOT_TOKEN = os.getenv("BOT_TOKEN", "6120020196:AAEnDU_Hj7TCISu9Jm4B5UNForW45VAaGLM")
 
-LOGS_MAKER_UBOT = int(os.getenv("LOGS_MAKER_UBOT", "-1002085942459"))
+LOGS_MAKER_UBOT = int(os.getenv("LOGS_MAKER_UBOT", "-1002071984353"))
 
 OWNER_ID = int(os.getenv("OWNER_ID", "92745302"))
 
@@ -36,5 +36,5 @@ OPENAI_KEY = os.getenv(
 
 MONGO_URL = os.getenv(
     "MONGO_URL",
-    "mongodb+srv://DrmkBot:prQhXViWev0f5LpO@dmrkbot.acbhzjn.mongodb.net/?retryWrites=true&w=majority",
+    "mongodb+srv://xcrymusik:xcrymusik@xcrymusik.e4nyahk.mongodb.net/?retryWrites=true&w=majority",
 )
