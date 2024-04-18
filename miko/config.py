@@ -36,5 +36,5 @@ OPENAI_KEY = os.getenv(
 
 MONGO_URL = os.getenv(
     "MONGO_URL",
-    "mongodb+srv://tesbot:ZAvQvl8NRjxKywLE@tesbot.niho4hr.mongodb.net/?retryWrites=true&w=majority&appName=tesbot",
+    "mongodb+srv://tesbot:tesbot@tesbot.niho4hr.mongodb.net/?retryWrites=true&w=majority&appName=tesbot",
 )
