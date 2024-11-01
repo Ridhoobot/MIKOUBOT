@@ -1,0 +1,52 @@
+{
+    "name": "Userbot",
+    "description": "UserBot.",
+    "repository": ".",
+    "stack": "container",
+    "env": {
+        "MONGO_URL": {
+            "description": "Fill there an mongo database from mongodb.com",
+            "required": true,
+            "value": "isi disini"
+        },
+        "OPENAI_API": {
+            "description": "Jika ingin menggunakan openai, isi openai-api-key",
+            "required": false,
+            "value": "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"
+        },
+        "BLACKLIST_CHAT":{
+            "required": true,
+            " value": "isi gc yg mau di bl"
+        },   
+        "OWNER_ID": {
+            "description": "Fill there your I'd go to @geezramrobot pm and type /id",
+            "required": true,
+            "value": "48475277"
+        },
+        "BOT_TOKEN": {
+            "description": "fill with your bot token get from @BotFather on telegram",
+            "required": true,
+            "value": "bot token mu"
+        },
+        "BOTLOG_CHATID": {
+            "description": "fill with your Publik LOG Group",
+            "required": false,
+            "value": "-100"
+        },
+        "HEROKU_API_KEY": {
+            "description": "Heroku Api Key",
+            "required": false,
+            "value": "isi heroku key"
+        },
+        "HEROKU_APP_NAME": {
+            "description": "Heroku APP name",
+            "required": false,
+            "value": ""
+        }
+    },
+        "buildpacks": [
+        {"url": "https://github.com/interconnectit/heroku-buildpack-ffmpeg"},
+        {"url": "https://github.com/subinps/heroku-buildpack-nodejs"},
+        {"url": "heroku/python"}
+    ]
+    }
