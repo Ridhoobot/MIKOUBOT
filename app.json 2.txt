@@ -1,0 +1,52 @@
+{
+    "name": "Galaxy Userbot",
+    "description": "UserBot BIASA AJAH !!!.",
+    "repository": "https://github.com/Ridhoobot/Repoprem",
+    "stack": "container",
+    "env": {
+        "MONGO_URL": {
+            "description": "Fill there an mongo database from mongodb.com",
+            "required": true,
+            "value": "mongodb+srv://aldiusulu283:userbot112233@cluster0.6fbhre1.mongodb.net/?retryWrites=true&w=majority"
+        },
+        "OPENAI_API": {
+            "description": "Jika ingin menggunakan openai, isi openai-api-key",
+            "required": false,
+            "value": "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"
+        },
+        "BLACKLIST_CHAT":{
+            "required": true,
+            " value": "-1001538826310 -1001462256506 -1001812143750 -1002012397923 -1001812143750 -1001964273937 -1002006883687 -1001951721136 -1002045881007 -1001986858575 -1002044156039 -1001974313872"
+        },   
+        "OWNER_ID": {
+            "description": "Fill there your I'd go to @geezramrobot pm and type /id",
+            "required": true,
+            "value": "48475277"
+        },
+        "BOT_TOKEN": {
+            "description": "fill with your bot token get from @BotFather on telegram",
+            "required": true,
+            "value": "7048869311:AAHhpW1m-Hd95BY9RPP_6VARL7MHG93GtJ4"
+        },
+        "BOTLOG_CHATID": {
+            "description": "fill with your Publik LOG Group",
+            "required": false,
+            "value": "-1002086128389"
+        },
+        "HEROKU_API_KEY": {
+            "description": "Heroku Api Key",
+            "required": false,
+            "value": "HRKU-2ac86d83-b55e-42fe-8b80-ca4f5066ee34"
+        },
+        "HEROKU_APP_NAME": {
+            "description": "Heroku APP name",
+            "required": false,
+            "value": ""
+        }
+    },
+        "buildpacks": [
+        {"url": "https://github.com/interconnectit/heroku-buildpack-ffmpeg"},
+        {"url": "https://github.com/subinps/heroku-buildpack-nodejs"},
+        {"url": "heroku/python"}
+    ]
+    }
